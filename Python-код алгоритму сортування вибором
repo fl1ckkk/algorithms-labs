@@ -1,0 +1,28 @@
+def selection_sort(arr):
+    n = len(arr)
+    comparisons = 0
+    assignments = 0
+
+    for i in range(n - 1):
+        min_index = i
+        assignments += 1  # присвоєння
+
+        for j in range(i + 1, n):
+            comparisons += 1
+            if arr[j] < arr[min_index]:
+                min_index = j
+                assignments += 1
+
+        comparisons += 1
+        if min_index != i:
+            arr[i], arr[min_index] = arr[min_index], arr[i]
+            assignments += 3
+
+    return arr, comparisons, assignments
+
+
+# Варіант №9
+data = [12, 23, 67, 65, 50, 70, 80, 61, 92]
+sorted_arr, comps, assigs = selection_sort(data.copy())
+print("Відсортований масив:", sorted_arr)
+print("Порівнянь:", comps, "Присвоєнь:", assigs)
